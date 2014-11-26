@@ -15,6 +15,7 @@ public class Game_platform extends flash.display.Sprite {
     private var _module:MvcMainModule;
     private var _starling:Starling;
 
+    //mac comment 3
 
     public function Game_platform() {
         var textField:TextField = new TextField();
