@@ -33,6 +33,8 @@ public class MvcMainModule extends ModuleCore{
     private var _prototypeProxy:PrototypeProxy;
 
 
+    //mac comment #2
+
      override protected function onInit():void {
          trace("MainModule.onInit");
          mediatorMap.map(StarlingMain,MainMediator);
