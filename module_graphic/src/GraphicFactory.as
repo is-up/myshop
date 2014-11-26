@@ -36,6 +36,8 @@ public class GraphicFactory {
     private static var _factory:StarlingFactory = null;
     private static var _completeCallback:Function = null;
 
+    //mac comment
+
     public static function init(completeCallback:Function = null):void {
         GraphicFactory._factory = new StarlingFactory();
         GraphicFactory._factory.parseData(new GraphicFactory.ResourseData());
