@@ -4,3 +4,5 @@
 *.ipr
 
 *.iws
+
+game_platform/out/production/game_platform/Game_platform.swf
