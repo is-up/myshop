@@ -47,6 +47,8 @@ public class MvcMainModule extends ModuleCore{
          //commandMap.map(ViewMessage.MAIN_ORANGE_BUTTON_CLICKED2,TestCommand2);
 
 
+         
+
          this._prototypeProxy = new PrototypeProxy();
          proxyMap.map(this._prototypeProxy);
 
