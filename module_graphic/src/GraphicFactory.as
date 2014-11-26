@@ -30,7 +30,7 @@ public class GraphicFactory {
     [Embed(source="/../asset_graphic/atlas_main.png", mimeType="application/octet-stream")]
     private static const ResourseData:Class;
 
-    [Embed(source="/../asset_graphic/fonts/Nautilus.otf", embedAsCFF="false", fontFamily="Nautilus")]
+    [Embed(source="/../asset_graphic/fonts/Nautilus.ttf", embedAsCFF="false", fontFamily="Nautilus")]
     private static const Nautilus:Class;
 
     private static var _factory:StarlingFactory = null;
