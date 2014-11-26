@@ -74,8 +74,8 @@ public class Shelf1View extends AbstractShelf{
     }
 
 
-    var _bufImage:Image = null;
-    var _bufBone:Bone = null;
+    private var _bufImage:Image = null;
+    private var _bufBone:Bone = null;
     private function _switchTextures(_armature:Armature, boneName:String, textureName:String):void {
         //this.unflatten();
 

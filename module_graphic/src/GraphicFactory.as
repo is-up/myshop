@@ -56,20 +56,20 @@ public class GraphicFactory {
 
     private static var _orangeBtnTexture:Scale9Textures = null;
     public static function createOrangeButton(width:int,height:int,label:String = ""):Button{
-        var _button = new Button();
+        var _button:Button = new Button();
 
         if(GraphicFactory._orangeBtnTexture == null){
             var _bufImg:Image = GraphicFactory.getImageByName("Interface/OrangeButtonSkin");
             GraphicFactory._orangeBtnTexture = new Scale9Textures(_bufImg.texture,new Rectangle(_bufImg.width/2,_bufImg.height/1.5,1,1));
         }
-        var btnImg =new Scale9Image(GraphicFactory._orangeBtnTexture,1);
+        var btnImg:Scale9Image = new Scale9Image(GraphicFactory._orangeBtnTexture,1);
 
-        var btnImgHover =new Scale9Image(GraphicFactory._orangeBtnTexture,1);
+        var btnImgHover:Scale9Image = new Scale9Image(GraphicFactory._orangeBtnTexture,1);
         var _filter:ColorMatrixFilter = new ColorMatrixFilter();
         _filter.adjustBrightness(0.2);
         btnImgHover.filter = _filter;
 
-        var btnImgDown =new Scale9Image(GraphicFactory._orangeBtnTexture,1);
+        var btnImgDown:Scale9Image = new Scale9Image(GraphicFactory._orangeBtnTexture,1);
         _filter = new ColorMatrixFilter();
         _filter.adjustBrightness(0.1);
         btnImgDown.filter = _filter;
