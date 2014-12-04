@@ -20,9 +20,9 @@ import starling.utils.MatrixUtil;
 //-----------------------------------------------------------------------------------------------
 
 public class UserProxy  extends Proxy{
-    private var _shopViewSetting:Object = null;
+    private var _shopDesignPacked:Object = null;
     /*
-     _userProxy.shopViewSetting = {
+     _userProxy._shopDesignPacked = {
      sizeX:10,sizeY:8,
      floors:{x5y6:"2",x0y0:"2"},
      walls:{x1:"w1",x3:"d1",y2:"d1"},
@@ -71,13 +71,13 @@ public class UserProxy  extends Proxy{
 
     }
 
-    public function get shopViewSetting():Object {
-        return _shopViewSetting;
+    public function get shopDesignPacked():Object {
+        return _shopDesignPacked;
     }
 
-    public function set shopViewSetting(value:Object):void {
-        this._shopViewSetting = value;
-        sendMessage(ModelToViewMessage.USER_SHOP_VIEW_UPDATE,this._shopViewSetting);
+    public function set shopDesignPacked(value:Object):void {
+        this._shopDesignPacked = value;
+        sendMessage(ModelToControllerMessage.USER_SHOP_DESIGN_LOADED,this._shopDesignPacked);
     }
 
     /*

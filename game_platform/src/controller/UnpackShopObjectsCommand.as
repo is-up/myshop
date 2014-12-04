@@ -10,7 +10,7 @@ import model.prototypes.ShelfProto;
 
 import mvcexpress.mvc.Command;
 
-public class UnpackGameObjectsCommand extends Command {
+public class UnpackShopObjectsCommand extends Command {
     [Inject]
     public var runtimeProxy:RuntimeProxy;
     [Inject]

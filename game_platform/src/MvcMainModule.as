@@ -5,7 +5,8 @@ package {
 import controller.DebugErrorCommand;
 import controller.GameLayerTouchCommand;
 import controller.TestCommand;
-import controller.UnpackGameObjectsCommand;
+import controller.UnpackShopDesignCommand;
+import controller.UnpackShopObjectsCommand;
 
 import layers.GameLayer;
 
@@ -43,7 +44,8 @@ public class MvcMainModule extends ModuleCore{
          commandMap.map(ViewToControllerMessage.MAIN_ORANGE_BUTTON_CLICKED,TestCommand);
          commandMap.map(ViewToControllerMessage.GAME_LAYER_TOUCH,GameLayerTouchCommand);
 
-         commandMap.map(ModelToControllerMessage.USER_SHOP_OBJECTS_LOADED,UnpackGameObjectsCommand);
+         commandMap.map(ModelToControllerMessage.USER_SHOP_OBJECTS_LOADED,UnpackShopObjectsCommand);
+         commandMap.map(ModelToControllerMessage.USER_SHOP_DESIGN_LOADED,UnpackShopDesignCommand);
 
          commandMap.map(DebugMessage.ERROR_MESSAGE,DebugErrorCommand);
          //commandMap.map(ViewMessage.MAIN_ORANGE_BUTTON_CLICKED2,TestCommand2);
@@ -88,19 +90,20 @@ public class MvcMainModule extends ModuleCore{
 
 
 
-        _userProxy.shopViewSetting = {
+        _userProxy.shopDesignPacked = {
             sizeX:10,sizeY:8,
-            floors:{x5y6:"2",x0y0:"2"},
-            walls:{x1:"w1",x3:"d1",y2:"d1"},
+            floors:{x5y6:"2",x0y0:"2", std:"Floor1"},
+            walls:{x1:"w1",x3:"d1",y2:"d1", std:"Wall1"},
             covers:{x1:"w1",y4:"w1"}  //wall covers (windows, etc)
         };
+        //
         //make same as _userProxy.shopObjectsPacked  ===> command ===> runtimeProxy ====> view
-
+        //
 
         _userProxy.shopObjectsPacked = {
             x3y4:"s1|225|p1x2e123456789,p2x2e123456789",
             x5y6:"s1|225|p2x25e123456789,p3x35e123456789",
-            x6y7:"s1|45|p2x25e123456789,p3x35e123456789",
+            x3y7:"s1|45|p2x25e123456789,p3x35e123456789",
             x8y7:"s1|225|p2x25e123456789,p3x35e123456789"
         };
 

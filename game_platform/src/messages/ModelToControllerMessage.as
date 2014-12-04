@@ -8,6 +8,7 @@ package messages {
         //Адресованных Controller
         //-----------------------
         public static const USER_SHOP_OBJECTS_LOADED:String = "USER_SHOP_OBJECTS_LOADED";
+        public static const USER_SHOP_DESIGN_LOADED:String = "USER_SHOP_DESIGN_LOADED";
 
 
 

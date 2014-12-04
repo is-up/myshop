@@ -33,9 +33,22 @@ public class CellData {
         }
         this._objects.push(obj)
     }
+    public function removeObject(obj:ShopObjectData):void {
+        var i:int=0;
+        while(i < this._objects.length){
+            if(this._objects[i] == obj){
+                this._objects.splice(i,1);
+            } else {
+                i++;
+            }
+        }
+
+    }
 
     public function get objects():Vector.<ShopObjectData> {
         return _objects;
     }
+
+
 }
 }

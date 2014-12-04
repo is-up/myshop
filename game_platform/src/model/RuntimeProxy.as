@@ -10,6 +10,7 @@ import messages.DebugMessage;
 import messages.ModelToViewMessage;
 
 import model.objects.CellData;
+import model.objects.ShopDesignData;
 
 import model.objects.ShopObjectData;
 
@@ -31,6 +32,8 @@ public class RuntimeProxy extends Proxy{
     private var _dragInertion:Point = new Point();
     //---------------------------
 
+    private var _shopDesign:ShopDesignData = null;
+
     private var _shopObjects:Vector.<ShopObjectData> = new Vector.<ShopObjectData>();
     private var _gameField:Object = {};
 
@@ -45,6 +48,11 @@ public class RuntimeProxy extends Proxy{
 
     override protected function onRemove():void {
 
+    }
+
+    public function set shopDesign(value:ShopDesignData):void {
+        this._shopDesign = value;
+        //send message to update shop view
     }
 
     public function get shopObjects():Vector.<ShopObjectData> {
@@ -62,9 +70,9 @@ public class RuntimeProxy extends Proxy{
     private function _updateShopObject(shopObjectData:ShopObjectData):void {
         var _bufPoint:Point = shopObjectData.position;
 
-        var _cell:CellData = this._getCellData(_bufPoint);
-        _cell.free();
-        _cell.addOwner(shopObjectData);
+       // var _cell:CellData = this._getCellData(_bufPoint);
+        //_cell.free();
+        //_cell.addOwner(shopObjectData);
         this._updateGameFieldOccPoints (shopObjectData,45);
 
 
@@ -75,21 +83,23 @@ public class RuntimeProxy extends Proxy{
     }
     private function _updateGameFieldOccPoints(objectData:ShopObjectData, adding:Boolean = true):void {
 
-        //
+        //do proper occ_var on cells (with few busy points)
+        //...
         //do matrix rotation according to object angle
         //...
 
         var occ_matrix:Array = objectData.proto.occ_matrix;
 
-        var _bufPoint:Point = objectData.position.clone();
+        var _bufPoint:Point = new Point();
+        var _objectPoint:Point = objectData.position.clone();
         var _bufCell:CellData;
         for(var i:int = 0;i< occ_matrix.length; i++){
             for(var j:int = 0;j< occ_matrix[i].length; j++){
-                _bufPoint.y = objectPoint.y + (i - 1);
-                _bufPoint.x = objectPoint.x + (j - 1);
+                _bufPoint.y = _objectPoint.y + (i - 1);
+                _bufPoint.x = _objectPoint.x + (j - 1);
                 _bufCell = this._getCellData(_bufPoint);
-                if(occ_matrix[i][j] < 0){
-                    if(_bufCell.occ_var <= 0){
+                if(occ_matrix[i][j] != 0){ //our new cell is not free
+                    if(_bufCell.occ_var <= 0){ //existing cell is not busy (free or reserved)
                         if(adding){
                             _bufCell.occ_var -= occ_matrix[i][j];
                             _bufCell.addObject(objectData);
@@ -99,7 +109,7 @@ public class RuntimeProxy extends Proxy{
                         }
                     } else {
                         sendMessage(DebugMessage.ERROR_MESSAGE,"Trying to reserve busy cell ["+_bufPoint.x+","+_bufPoint.y+"] " +
-                                "by object on ["+objectData.position.x+","+objectData.position.y);
+                                "by object on ["+objectData.position.x+","+objectData.position.y+"]");
                     }
                 }
             }
